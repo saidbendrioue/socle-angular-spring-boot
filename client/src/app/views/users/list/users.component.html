@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="icon-people"></i> Liste des utilisateurs
+                </div>
+                <div class="card-body">
+                    <p-table #dt [columns]="cols" [value]="users" [paginator]="true" [rows]="15">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th *ngFor="let col of columns" pTooltip="{{col.header}}" tooltipPosition="top">
+                                    {{col.header}}
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                            <tr>
+                                <th *ngFor="let col of columns">
+                                    <input class="form-control form-control-sm" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                                </th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-columns="columns">
+                            <tr [pSelectableRow]="rowData">
+                                <td *ngFor="let col of columns" [style.width]="col.width" tooltipPosition="top">
+                                    {{rowData[col.field]}}
+                                </td>
+                                <td>
+                                    <button type="button" (click)="editUser(rowData)" class="btn btn-sm btn-warning" pTooltip="Modifier" tooltipPosition="top">
+                                        <i class="fa fa-cog text-white"></i>
+                                    </button>&nbsp;<button type="button" (click)="deleteUser(rowData)" class="btn btn-sm btn-danger" pTooltip="Supprimer" tooltipPosition="top">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+                <div class="card-footer">
+                    <button routerLink="/users/add" type="submit" class="btn btn-primary"><i
+                            class="icon-user-follow"></i> Ajouter</button>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>

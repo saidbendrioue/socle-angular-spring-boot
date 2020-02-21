@@ -1,0 +1,40 @@
+spring:
+  mail:
+    default-encoding: UTF-8
+    host: localhost
+    port: 25
+    protocol: smtp
+  datasource:
+    data: classpath:test-data.sql
+  jpa:
+    properties:
+      hibernate.format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+management:
+  endpoints:
+    web:
+      cors:
+        allowed-origins:*
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug 
+        
+        
+#App Specific configuration
+app:
+  expiration-hours: 24
+  default-sender: noreply-masterkey@bouygues-construction.com
+  activation-url: http://localhost:4200/#/activate/
+  jwt:  
+    header: Authorization
+    secret: mySecret
+    expiration: 604800
+    route-authentication-path: /auth/login
+    route-authentication-refresh: /auth/refresh

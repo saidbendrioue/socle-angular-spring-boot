@@ -1,0 +1,38 @@
+spring:
+  jpa:
+    show-sql: false
+    properties.hibernate.format_sql: true
+    hibernate.ddl-auto: create
+  profiles.active: '@spring.profiles.active@'
+
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost;DatabaseName=PSX01;integratedSecurity=true;
+    initialization-mode: always
+
+logging.level.org.hibernate.SQL: debug 
+        
+        
+#App Specific configuration
+app.jwt.secret: mySecret
+    
+# tree dashes are to override previous configuration with 
+# the new configuration bellow ,it overrides only the params mentioned  
+# and preserve the others
+---
+  
+spring:
+  profiles: prod
+  datasource.url: jdbc:sqlserver://localhost;DatabaseName=PSX02;integratedSecurity=true;
+
+---
+spring:
+  profiles: test
+  h2:
+    enabled: true
+    path: /h2-console    
+    
+    
+
+    
+    
