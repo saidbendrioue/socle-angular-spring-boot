@@ -1,6 +1,6 @@
 Mise en place du socle
 
-Versions Utilisé
+Versions Utilisés
   1. Spring Boot v2.0.3
   2. Angular v6.0.5
   3. Core UI 2.0.2 
