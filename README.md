@@ -6,7 +6,7 @@ Versions Utilisés
   3. Core UI 2.0.2 
 
 Pour construire le projet 'mvn clean install'
-Pour accéder a l'application 'cd client' puis 'mvn spring-boot:run'
+Pour accéder a l'application 'cd server' puis 'mvn spring-boot:run'
 L'application sera accessible sur `http://localhost:8080`.
 
 Fonctionalités :
